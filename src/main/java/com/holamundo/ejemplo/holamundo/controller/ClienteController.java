@@ -21,7 +21,7 @@ public class ClienteController {
             new Cliente(4, "Bastian", "bastian@example.com")
     );
 
-    @PostMapping("/listar")
+    @GetMapping("/listar")
     public List<Cliente> listar() {
         return clientes;
     }
@@ -52,6 +52,16 @@ public class ClienteController {
             if (cliente.getId() == idCliente) {
                 it.remove();
                 return ResponseEntity.ok().body("Cliente eliminado correctamente");
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado");
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<?> buscarClientePorNombre(@RequestParam String nombre) {
+        for (Cliente c : clientes) {
+            if (c.getNombre().equalsIgnoreCase(nombre)) {
+                return ResponseEntity.ok().body(c);
             }
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado");
