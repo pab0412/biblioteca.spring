@@ -3,38 +3,39 @@ package com.holamundo.ejemplo.holamundo.model;
 public class Producto {
     private int id;
     private String nombre;
-    private double precio;
+    private int precio;
 
-    // Constructor
-    public Producto(int id, String nombre, double precio) {
+    public Producto() {
+    }
+
+    public Producto(int id, String nombre, int precio) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
     }
 
-    // Getters
+    // Getters y Setters
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    // Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setPrecio(double precio) {
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 }
