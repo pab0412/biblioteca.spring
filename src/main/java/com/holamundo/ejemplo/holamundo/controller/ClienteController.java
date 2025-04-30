@@ -26,6 +26,16 @@ public class ClienteController {
         return clientes;
     }
 
+    @GetMapping("/{idCliente}")
+    public ResponseEntity<?> buscar(@PathVariable int idCliente) {
+        for (Cliente cliente : clientes){
+            if (cliente.getId() == idCliente){
+                return ResponseEntity.ok(cliente);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado");
+    }
+
     @PostMapping
     public ResponseEntity<?> crearCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
